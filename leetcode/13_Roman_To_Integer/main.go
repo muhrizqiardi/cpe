@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 var RomanNumeralsMap = map[string]int{
 	"I": 1,
 	"V": 5,
@@ -17,31 +15,37 @@ func romanToInt(s string) int {
 
 loopString:
 	for i := 0; i < len(s); i++ {
-		fmt.Printf("i=%d; s[i:i+2]=%s;\n", i, s[i:i+2])
-		switch s[i : i+2] {
+		var sRange string
+		if i == len(s)-1 {
+			sRange = string(s[i])
+		} else {
+			sRange = s[i : i+2]
+		}
+
+		switch sRange {
 		case "IV":
 			result += 4
-			i++
+			i += 1
 			continue loopString
 		case "IX":
 			result += 9
-			i++
+			i += 1
 			continue loopString
 		case "XL":
 			result += 40
-			i++
+			i += 1
 			continue loopString
 		case "XC":
 			result += 90
-			i++
+			i += 1
 			continue loopString
 		case "CD":
 			result += 400
-			i++
+			i += 1
 			continue loopString
 		case "CM":
 			result += 900
-			i++
+			i += 1
 			continue loopString
 		default:
 			result += RomanNumeralsMap[string(s[i])]

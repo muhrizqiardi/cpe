@@ -15,6 +15,14 @@ func TestRomanToInt(t *testing.T) {
 			Exp:   3,
 		},
 		{
+			Input: "IV",
+			Exp:   4,
+		},
+		{
+			Input: "IX",
+			Exp:   9,
+		},
+		{
 			Input: "LVIII",
 			Exp:   58,
 		},
@@ -25,7 +33,7 @@ func TestRomanToInt(t *testing.T) {
 	}
 
 	for _, e := range cases {
-		t.Run(fmt.Sprintf("input %s; exp; %d", e.Input, e.Exp), func(t *testing.T) {
+		t.Run(fmt.Sprintf("input %s exp %d", e.Input, e.Exp), func(t *testing.T) {
 			exp := e.Exp
 			got := romanToInt(e.Input)
 
